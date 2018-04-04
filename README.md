@@ -1,6 +1,5 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
 
-(___TODO__: your project name_)
+(Quick Cart)
 
 # Shoppy Shoperson 
 
@@ -8,9 +7,22 @@ The content below is an example project proposal / requirements document. Replac
 
 (___TODO__: a brief one or two paragraph, high-level description of your project_)
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
 
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
+Food Cart Order Streamlining 
+
+This web places orders so you can avoid waiting around the food cart for your food. 
+
+Need to build a messing system that communicates between two devices. 
+
+Shows menu and prices. 
+
+Make a cart so users can place multiple items in the cart 
+
+After desired items are put into the cart the user can place an order and it will go to the cart so they can start preparing your order and you can pick it up after its ready 
+
+Imagine a situation where you want to eat at a food cart but you dont want to wait outside the cart while the food is being prepared. 
+This is where this app comes in. 
+This app takes an order for food from a food cart and tells the cart to prepare your order so you can pick it up 
 
 
 ## Data Model
@@ -19,34 +31,50 @@ Shoppy Shoperson is a web app that will allow users to keep track of multiple gr
 
 The application will store Users, Lists and Items
 
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
+This application will store
+
+Food cart locations (can have multiple),
+name, 
+menu, 
+food items (multiple lists )
+prices (miltiple ists)
+
 
 (___TODO__: sample documents_)
 
 An Example User:
 
-```javascript
-{
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
-}
-```
 
-An Example List with Embedded Items:
+// 1ST DRAFT DATA MODEL
+const mongoose = require('mongoose');
 
-```javascript
-{
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
-}
-```
+// users
+
+const User = new mongoose.Schema({
+  name: {type: String, required: true},
+    phoneNumber: {type: String, required: true},
+    order: [Item]
+});
+
+// an item (or group of the same items) in a grocery list
+// * includes the quantity of this item (multiple of the same item does not 
+//   require additional Item documents; just increase the quantity!)
+// * items in a list can be crossed off
+const Item = new mongoose.Schema({
+  name: {type: String, required: true},
+  quantity: {type: Number, min: 1, required: true},
+  price: {type: Boolean, default: false, required: true}
+});
+
+//holds menus of food carts and holds multiple items and proces
+const Cart = new mongoose.Schema({
+  cartName: {type: String, required: true},
+  items: [Item],
+    phoneNumber: String
+});
+
+
+
 
 
 ## [Link to Commented First Draft Schema](db.js) 
@@ -71,9 +99,9 @@ An Example List with Embedded Items:
 
 ## Site map
 
-(___TODO__: draw out a site map that shows how pages are related to each other_)
+( draw out a site map that shows how pages are related to each other_)
 
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+In:  documentation/siteMap.jpg
 
 ## User Stories or Use Cases
 
@@ -86,31 +114,38 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 5. as a user, I can add items to an existing grocery list
 6. as a user, I can cross off items in an existing grocery list
 
+
+1. users do not need to register 
+2. as a user I can create an order 
+3. as an user I can select a cart  
+4. as a user, I can put multiple items in my cart 
+5. as a user, I can place an order and the food will start to be prepared
+
+
+
 ## Research Topics
 
 (___TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
 
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
 
-10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
+(6 points) Integrate messaging backend with twillio and ngrok 
+    I am going to be using twillio and ngrok to formulte an order and send it over to the cart 
+    
+    
+* (2 points) bootstrap 
+    I will use bootstrap for styling my web app 
+    
 
-
-## [Link to Initial Main Project File](app.js) 
+## [app.js](app.js) 
 
 (___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
+
 
 ## Annotations / References Used
 
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+2. [https://www.twilio.com/docs/libraries/node]
+3. [http://bootstrapdocs.com/v3.0.3/docs/css/]
+4 [https://ngrok.com/docs]
+5. [https://developers.google.com/maps/documentation/javascript/]
