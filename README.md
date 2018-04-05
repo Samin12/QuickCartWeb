@@ -1,8 +1,6 @@
 
 (Quick Cart)
 
-# Shoppy Shoperson 
-
 ## Overview
 
 (___TODO__: a brief one or two paragraph, high-level description of your project_)
@@ -142,7 +140,7 @@ In:  documentation/siteMap.jpg
 
 
 ## Annotations / References Used
-
+ff
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
 2. [https://www.twilio.com/docs/libraries/node]
