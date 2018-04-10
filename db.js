@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const User = new mongoose.Schema({
   name: {type: String, required: true},
     phoneNumber: {type: String, required: true},
-    order: [Item]
+    //order: [Item]
 });
 
 // an item (or group of the same items) in a grocery list
@@ -27,4 +27,9 @@ const Cart = new mongoose.Schema({
 });
 
 
+mongoose.model('User', User);
+mongoose.model('Item', Item);
+
+
+mongoose.connect('mongodb://syi211:Z92D3IL2@class-mongodb.cims.nyu.edu/USERNAME\n');
 
