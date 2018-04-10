@@ -11,9 +11,14 @@ const session = require('express-session');
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
-      saveUninitialized: true
+    saveUninitialized: true
 };
 app.use(session(sessionOptions));
+
+
+
+
+app.set('port', (process.env.PORT || 3000));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.get('/cartNearby', (req, res) => {
@@ -53,7 +58,7 @@ app.post('/placeOrder', (req, res) => {
 });
 
 
-
-
-
-app.listen(3000);
+//changed this
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});

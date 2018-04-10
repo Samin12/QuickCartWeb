@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // users
 
 const User = new mongoose.Schema({
-  name: {type: String, required: true},
+    name: {type: String, required: true},
     phoneNumber: {type: String, required: true},
     //order: [Item]
 });
@@ -14,22 +14,44 @@ const User = new mongoose.Schema({
 //   require additional Item documents; just increase the quantity!)
 // * items in a list can be crossed off
 const Item = new mongoose.Schema({
-  name: {type: String, required: true},
-  quantity: {type: Number, min: 1, required: true},
-  price: {type: Boolean, default: false, required: true}
+    name: {type: String, required: true},
+    quantity: {type: Number, min: 1, required: true},
+    price: {type: Boolean, default: false, required: true}
 });
 
 //holds menus of food carts and holds multiple items and proces
 const Cart = new mongoose.Schema({
-  cartName: {type: String, required: true},
-  items: [Item],
+    cartName: {type: String, required: true},
+    items: [Item],
     phoneNumber: String
 });
+
+
+// is the environment variable, NODE_ENV, set to PRODUCTION?
+let dbconf;
+if (process.env.NODE_ENV === 'PRODUCTION') {
+    // if we're in PRODUCTION mode, then read the configration from a file
+    // use blocking file io to do this...
+    const fs = require('fs');
+    const path = require('path');
+    const fn = path.join(__dirname, 'config.json');
+    const data = fs.readFileSync(fn);
+
+    // our configuration file will be in json, so parse it and set the
+    // conenction string appropriately!
+    const conf = JSON.parse(data);
+    dbconf = conf.dbconf;
+} else {
+    // if we're not in PRODUCTION mode, then use
+    dbconf = 'mongodb://localhost/syi211';
+}
+
+
 
 
 mongoose.model('User', User);
 mongoose.model('Item', Item);
 
 
-mongoose.connect('mongodb://syi211:Z92D3IL2@class-mongodb.cims.nyu.edu/USERNAME\n');
+mongoose.connect(dbconf);
 
