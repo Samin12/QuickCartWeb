@@ -1,5 +1,6 @@
 require('./db');
 
+const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -18,7 +19,7 @@ app.use(session(sessionOptions));
 
 
 
-app.set('port', (process.env.PORT || 17536));
+app.set('port', (process.env.PORT || 3000));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,8 +32,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+const User = mongoose.model('User');
+
+
+
+new User({
+    name: "Samin",
+    phoneNumber: "3477612839"
+}).save(function (err,review,count) {
+    //res.redirect('/');
+});
+
+
+console.log("catt");
+User.find({},function (err,varToStoreResult,count) {
+
+
+    console.log("Data");
+    console.log(varToStoreResult);
+});
+
+
 
 app.get('/', (req, res) => {
+    res.render('index');
+});
+
+
+app.post('/', (req, res) => {
+
+    console.log(req.body);
     res.render('index');
 });
 
