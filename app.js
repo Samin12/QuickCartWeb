@@ -36,21 +36,21 @@ const User = mongoose.model('User');
 
 
 
-new User({
-    name: "Samin",
-    phoneNumber: "3477612839"
-}).save(function (err,review,count) {
-    //res.redirect('/');
-});
-
-
-console.log("catt");
-User.find({},function (err,varToStoreResult,count) {
-
-
-    console.log("Data");
-    console.log(varToStoreResult);
-});
+// new User({
+//     name: "Samin",
+//     phoneNumber: "3477612839"
+// }).save(function (err,review,count) {
+//     //res.redirect('/');
+// });
+// 
+// 
+// console.log("catt");
+// User.find({},function (err,varToStoreResult,count) {
+// 
+// 
+//     console.log("Data");
+//     console.log(varToStoreResult);
+// });
 
 
 
@@ -59,9 +59,21 @@ app.get('/', (req, res) => {
 });
 
 
+
 app.post('/', (req, res) => {
 
-    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.phoneNumber);
+   
+    new User({
+    name: req.body.name,
+    phoneNumber: req.body.phoneNumber
+}).save(function (err,review,count) {
+    //res.redirect('/');
+        User.find({},function (err,varToStoreResult,count) {
+            console.log(varToStoreResult);
+        });
+});
     res.render('index');
 });
 
