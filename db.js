@@ -3,11 +3,7 @@ const mongoose = require('mongoose');
 
 // users
 
-const User = new mongoose.Schema({
-    name: {type: String, required: true},
-    phoneNumber: {type: String, required: true},
-    //order: [Item]
-});
+
 
 // an item (or group of the same items) in a grocery list
 // * includes the quantity of this item (multiple of the same item does not 
@@ -26,6 +22,13 @@ const Cart = new mongoose.Schema({
     phoneNumber: String
 });
 
+
+const User = new mongoose.Schema({
+    name: {type: String, required: true},
+    phoneNumber: {type: String, required: true},
+    //order: [Item]
+    order: [Item]
+});
 
 // is the environment variable, NODE_ENV, set to PRODUCTION?
 let dbconf;

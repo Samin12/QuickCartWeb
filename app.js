@@ -65,7 +65,8 @@ app.post('/', (req, res) => {
 
     console.log(req.body.name);
     console.log(req.body.phoneNumber);
-   
+    console.log(req.body.cartName);
+
     new User({
     name: req.body.name,
     phoneNumber: req.body.phoneNumber
@@ -75,15 +76,26 @@ app.post('/', (req, res) => {
             console.log(varToStoreResult);
         });
 });
-    res.render('index');
+
+    if (req.body.cartName === "Halal Guys"){
+        res.render('cart1');
+    }
+
+
+
+
 });
 
-app.get('/cartNearby', (req, res) => {
-    res.render('cartsNearby');
+app.get('/cart', (req, res) => {
+    res.render('cart1');
 });
 
-app.get('/cartSelect', (req, res) => {
-    res.render('cartSelect');
+app.post('/cart', (req, res) => {
+    res.render('cart1');
+});
+
+app.post('/exit', (req, res) => {
+    res.render('exit');
 });
 
 app.get('/menu', (req, res) => {

@@ -31,7 +31,7 @@ function sendText(recipient,msgText) {
 
 let toNumber = "3477612839";
 
-sendText(toNumber,"na fam");
+//sendText(toNumber,"na fam");
 
 module.exports = {
     sendText: sendText
