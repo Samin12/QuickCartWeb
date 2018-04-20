@@ -1,4 +1,5 @@
 require('./db');
+require('./messenger');
 
 const mongoose = require('mongoose');
 const express = require('express');

@@ -1,2 +1,3 @@
-{"dbconf":"mongodb://syi211:Z92D3IL2@class-mongodb.cims.nyu.edu/syi211"}
-
+{"dbconf":"mongodb://syi211:Z92D3IL2@class-mongodb.cims.nyu.edu/syi211",
+  "accountSID" : "ACf1cfc2cf9bab2c9e3939e6bfbf518f71",
+  "accountToken": "ec9e25df6028ab386bec76e96a5efc0d"}

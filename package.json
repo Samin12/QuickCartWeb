@@ -7,29 +7,38 @@
     "twilio",
     "sms",
     "rest",
-    "api"
+    "api",
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/twilio/twilio-node.git"
   },
   "dependencies": {
+    "jquery": "3.3.1",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.1.0",
+    "deprecate": "1.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.1",
-    "mongoose": "^5.0.11",
-    "mongoose-type-email": "^1.0.5",
-    "mongoose-url-slugs": "^1.0.2",
     "jsonwebtoken": "^8.1.0",
     "lodash": "4.0.0",
     "moment": "2.19.3",
+    "mongoose": "^5.0.11",
+    "mongoose-type-email": "^1.0.5",
+    "mongoose-url-slugs": "^1.0.2",
     "q": "2.0.x",
     "request": "2.83.x",
     "rootpath": "0.1.2",
     "scmp": "0.0.3",
-    "xmlbuilder": "9.0.1",
-    "deprecate": "1.0.0"
+    "twilio": "^3.15.0",
+    "xmlbuilder": "9.0.1"
   },
   "devDependencies": {
     "express": "3.x",
@@ -38,7 +47,9 @@
     "jsdoc": "3.5.5",
     "jshint": "2.8.x",
     "nsp": "2.8.0",
-    "proxyquire": "1.8.0"
+    "proxyquire": "1.8.0",
+    "browser-sync": "2.23.6",
+    "gulp": "^3.9.1"
   },
   "scripts": {
     "test": "jasmine-node --captureExceptions spec",
