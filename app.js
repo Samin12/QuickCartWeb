@@ -333,7 +333,7 @@ app.post('/done', (req, res) => {
 
 
 
-    res.render('done');
+    res.redirect('/');
 });
 
 
