@@ -270,9 +270,7 @@ app.post('/exit', (req, res) => {
         //on now
        // console.log(orderMsgText)
 
-         twilioServer.sendText("3477612839",orderMsgText)
-
-
+         //twilioServer.sendText("3477612839",orderMsgText)
 
         res.redirect('/done');
 
@@ -283,7 +281,6 @@ app.post('/exit', (req, res) => {
 });
 
 app.get('/done', (req, res) => {
-
     res.render("done");
 });
 
