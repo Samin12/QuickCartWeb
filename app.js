@@ -289,9 +289,9 @@ app.get('/done', (req, res) => {
 app.post('/done', (req, res) => {
     console.log("done obj");
 
-    req.session.regenerate(function (err) {
-        req.session.auth = user;
-        res.redirect('/cart');
+    req.session.regenerate((err) => {
+        req.session.auth = req.user;
+        res.redirect('/');
     });
 
 });
