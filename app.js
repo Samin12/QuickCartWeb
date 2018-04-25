@@ -290,7 +290,7 @@ app.post('/done', (req, res) => {
     console.log("POST ONE DONE");
 
     req.session.regenerate((err) => {
-        req.session.auth = req.user;
+        // req.session.auth = req.user;
         res.redirect('/');
     });
 
