@@ -143,27 +143,6 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 
-    // console.log(req.body.name);
-    // console.log(req.body.phoneNumber);
-    // console.log(req.body.cartName);
-
-
-
-//     new User({
-//     name: req.body.name,
-//     phoneNumber: req.body.phoneNumber
-// }).save(function (err,review,count) {
-//     //res.redirect('/');
-//         User.find({},function (err,varToStoreResult,count) {
-//             //console.log(varToStoreResult);
-//         });
-// });
-
-
-//use sessions to filter
-
-
-
     if (req.body.cartName === "Halal Guys"){
         res.redirect('/cart');
     }
@@ -178,6 +157,8 @@ app.post('/', (req, res) => {
 app.get('/cart', (req, res) => {
     res.render('cart1');
 });
+
+
 
 app.post('/cart', (req, res) => {
 
@@ -221,34 +202,15 @@ app.post('/cart', (req, res) => {
                varToStoreResult.order.push(order);
             });
 
-            //console.log(".lgasd");
-
-           // console.log(varToStoreResult);
-
-            //varToStoreResult.save();
 
         });
 
-        // User.findOneAndUpdate({sessionID: req.session.id},function (err,user) {
-        //     user.order.push(sesOrder.allOrders);
-        //     console.log(user)
-        // });
 
     });
     //
-    // console.log("SesUser");
-    //
-    // console.log(sesUser)
-    // console.log("SesUser");
 
 
-
-
-
-    //console.log(tot+"This is the otal ");
-
-
-    res.render('exit',{allOrders: sesOrder.allOrders,total:tot});
+    res.redirect('exit');
 
 
 
@@ -263,35 +225,25 @@ app.get('/exit', (req, res) => {
         console.log("cat");
 
 
-       // console.log(varToStoreResult);
+       console.log(varToStoreResult[0].order);
+
+
+        console.log("cat");
+
+        res.render('exit',{allOrders: varToStoreResult[0].order,total:varToStoreResult[0].total});
     });
 
-    res.render('exit');
 });
 
 app.post('/exit', (req, res) => {
     //console.log(req.body.name)
 
     User.find({sessionID: req.session.id},function (err,varToStoreResult) {
-       // console.log("cat");
+        //  console.log("Last msg");
 
 
-       // console.log(varToStoreResult);
-    });
-
-
-    res.redirect('/exit');
-});
-
-app.post('/done', (req, res) => {
-
-    console.log("done obj");
-    User.find({sessionID: req.session.id},function (err,varToStoreResult) {
-      //  console.log("Last msg");
-
-
-       // console.log(varToStoreResult);
-      //  console.log(varToStoreResult[0].total);
+        // console.log(varToStoreResult);
+        //  console.log(varToStoreResult[0].total);
 
         let itemNameArray= [];
 
@@ -306,7 +258,7 @@ app.post('/done', (req, res) => {
 
 
 
-     let orderMsgText = "Your order total is "+varToStoreResult[0].total+ " for "+ itemNameArray.toString() +" will be ready in 10 minutes";
+        let orderMsgText = "Your order total is "+varToStoreResult[0].total+ " for "+ itemNameArray.toString() +" will be ready in 10 minutes";
 
         console.log(orderMsgText);
 
@@ -316,14 +268,32 @@ app.post('/done', (req, res) => {
         // not sure how to test that but twillo has a log of all these texts stored as well
 
         //on now
+       // console.log(orderMsgText)
 
-        twilioServer.sendText("3477612839",orderMsgText)
+         twilioServer.sendText("3477612839",orderMsgText)
 
     });
 
 
 
-    res.redirect('/');
+    res.redirect('/done');
+});
+
+app.get('/done', (req, res) => {
+
+    res.render("done");
+});
+
+
+
+app.post('/done', (req, res) => {
+    console.log("done obj");
+
+    req.session.regenerate(function (err) {
+        req.session.auth = user;
+        res.redirect('/cart');
+    });
+
 });
 
 
