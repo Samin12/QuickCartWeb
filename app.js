@@ -280,7 +280,7 @@ app.post('/exit', (req, res) => {
     });
 
 
-    res.render('exit');
+    res.redirect('/exit');
 });
 
 app.post('/done', (req, res) => {
@@ -297,10 +297,6 @@ app.post('/done', (req, res) => {
 
 
         varToStoreResult[0].order.forEach((x)=>{
-            //console.log(x.name);
-            // console.log("---");
-            // console.log(x.name);
-            // console.log("---");
 
             itemNameArray.push(x.amount+" "+x.name);
             itemNameArray.push(" and ");
@@ -311,12 +307,6 @@ app.post('/done', (req, res) => {
 
 
      let orderMsgText = "Your order total is "+varToStoreResult[0].total+ " for "+ itemNameArray.toString() +" will be ready in 10 minutes";
-
-        // console.log("---");
-         //console.log(orderMsgText);
-        //
-        // console.log("---");
-
 
         console.log(orderMsgText);
 
