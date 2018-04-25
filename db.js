@@ -10,9 +10,10 @@ const mongoose = require('mongoose');
 //   require additional Item documents; just increase the quantity!)
 // * items in a list can be crossed off
 const Item = new mongoose.Schema({
+    cartName: String,
     name: {type: String, required: true},
-    quantity: {type: Number, min: 1, required: true},
-    price: {type: Boolean, default: false, required: true}
+    price: { type: Number, min: 0},
+    amount: Number
 });
 
 //holds menus of food carts and holds multiple items and proces
@@ -20,14 +21,16 @@ const Cart = new mongoose.Schema({
     cartName: {type: String, required: true},
     items: [Item],
     phoneNumber: String
+
 });
 
 
 const User = new mongoose.Schema({
     name: {type: String, required: true},
     phoneNumber: {type: String, required: true},
-    //order: [Item]
-    order: [Item]
+    order: [Item],
+    sessionID: {type: String, required: true},
+    total: Number
 });
 
 // is the environment variable, NODE_ENV, set to PRODUCTION?

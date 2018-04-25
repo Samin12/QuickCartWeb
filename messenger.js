@@ -10,8 +10,11 @@ const data = fs.readFileSync(fn);
 // our configuration file will be in json, so parse it and set the
 // conenction string appropriately!
 const conf = JSON.parse(data);
-accountSID = conf.accountSID;
+accountSID = conf.accountSID ;
 accountToken = conf.accountToken;
+
+console.log(accountSID);
+console.log(accountToken);
 
 function sendText(recipient,msgText) {
 
@@ -25,13 +28,18 @@ function sendText(recipient,msgText) {
         body: msgText
     }).then((messsage) => console.log(message.sid));
 
+
+    console.log("cat");
+
 }
 
 
 
+//let toNumber = "2137030449";
+//becuase my twillio account is tril texts only go to my phone number
 let toNumber = "3477612839";
 
-//sendText(toNumber,"na fam");
+//sendText(toNumber,"wtf not working");
 
 module.exports = {
     sendText: sendText

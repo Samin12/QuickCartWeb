@@ -30,25 +30,38 @@
 
 <h2><center> {{name}} Place Your Order!</center></h2>
 
-<table>
+<h3>Orders</h3>
+
+<table style="">
     <tr>
-        <th>Food Cart</th>
-        <th>Item</th>
-        <th>Ammount</th>
+        <th>Food Items Selected</th>
+        <th>Amount</th>
+        <th>Price of Each</th>
+
     </tr>
 
 
-    <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-    </tr>
+    <!--
+    add for each element in the session post request
 
+    -->
+
+    {{#each allOrders}}
+        <tr>
+            <td> {{this.name}}</td>
+            <td> {{this.amount}}</td>
+            <td>{{this.price}}</td>
+
+        </tr>
+    {{/each}}
 
 </table>
 
-<br>
-<br>
+<center>
+    <br>
+<h2>Total: {{total}}</h2>
+<center>
+
 
 <center>
 
@@ -68,15 +81,19 @@
 </style>
 </head>
 
+    <form method="POST" action="/done">
+        <input type="submit"  class="button" value="Place Order">
+    </form>
 
 
 
-<a href="/" class="button">Place Order</a>
 
+    </div>
 </center>
 
 
+</center>
 
-
+</center>
 </body>
 </html>
