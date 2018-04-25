@@ -272,11 +272,14 @@ app.post('/exit', (req, res) => {
 
          twilioServer.sendText("3477612839",orderMsgText)
 
+
+
+        res.redirect('/done');
+
     });
 
 
 
-    res.redirect('/done');
 });
 
 app.get('/done', (req, res) => {
