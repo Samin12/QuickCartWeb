@@ -319,15 +319,20 @@ app.post('/done', (req, res) => {
 
 
         console.log(orderMsgText);
-        // twilioServer.sendText("3477612839",orderMsgText)
+
+
+        // uncomment this line to send the messege string to my number
+        // becuae I am using a trail version of twillio the messeges go only to my phone
+        // not sure how to test that but twillo has a log of all these texts stored as well
+
+        //on now
+
+        twilioServer.sendText("3477612839",orderMsgText)
 
     });
 
 
 
-    //console.log(req.body.name)
-    // have to get and retrun the string
-   // twilioServer.sendText("3477612839","the string");
     res.render('done');
 });
 
