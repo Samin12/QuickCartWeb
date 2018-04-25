@@ -287,7 +287,7 @@ app.get('/done', (req, res) => {
 
 
 app.post('/done', (req, res) => {
-    console.log("done obj");
+    console.log("POST ONE DONE");
 
     req.session.regenerate((err) => {
         req.session.auth = req.user;
