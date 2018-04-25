@@ -291,6 +291,7 @@ app.post('/done', (req, res) => {
 
     req.session.regenerate((err) => {
         // req.session.auth = req.user;
+        console.log("REDIRECTING TO HOME");
         res.redirect('/');
     });
 
