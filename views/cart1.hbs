@@ -65,12 +65,12 @@
             <form method="POST" action="">
                 <div>
                     <label for="name">Name<br></label>
-                    <input type="text" id="name" name="name" value="">
+                    <input type="text" id="name" name="name" value="" required>
                 </div>
 
                 <div>
                     <label for="phoneNumber">Phone Number<br></label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" value="" required>
                 </div>
 
                 <br>
@@ -85,7 +85,7 @@
 
                     <br>
 
-                <input type="submit"  class="button" value="Place Order" formaction="">
+                <input type="submit"  class="button" value="Place Order" formaction="" required>
 
 
 
@@ -122,6 +122,7 @@
             </div>
 
 
+
             <!--here
          -->
             <div class="row">
@@ -148,9 +149,9 @@
 
                             <script src="front.js"></script>
 
-                            <input type="number" id="cat" name="item" value="1">
-                            <input type="hidden" name="itemName" value="Chicken Over Rice">
-                            <input type="hidden" name="itemPrice" value="8.99">
+                            <input type="number" id="cat" name="item" value="1" required>
+                            <input type="hidden" name="itemName" value="Chicken Over Rice" required>
+                            <input type="hidden" name="itemPrice" value="8.99" required>
 
 
 
