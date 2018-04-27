@@ -25,6 +25,13 @@ This is where this app comes in.
 This app takes an order for food from a food cart and tells the cart to prepare your order so you can pick it up 
 
 
+***********
+
+For Demostation purposes I have only made a page for Halal Guys, If I were to make more it would be the same thing just 
+more data entry. 
+
+************
+
 ## Data Model
 
 (___TODO__: a description of your application's data and their relationships to each other_) 
