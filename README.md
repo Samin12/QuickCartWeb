@@ -140,6 +140,12 @@ In:  documentation/siteMap.jpg
 * (2 points) bootstrap 
     I will use bootstrap for styling my web app 
     
+    
+Also added but its just extra
+
+   (3 points) Google Maps API
+   
+   (2 points) Jquery. 
 
 ## [app.js](app.js) 
 
