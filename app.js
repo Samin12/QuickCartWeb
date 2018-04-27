@@ -270,7 +270,17 @@ app.post('/exit', (req, res) => {
         //on now
        // console.log(orderMsgText)
 
-         twilioServer.sendText("3477612839",orderMsgText)
+        /*
+        For Demostation purposes I have only made a page for Halal Guys, If I were to make more it would be the same thing just
+more data entry.
+
+I have removed this feature from the deployed app as it charges my twillio account for each text message sent
+I have clarified this with Professor Versoza and he told to make a screen cap of the feature working
+
+The gif can be found in documentation folder
+         */
+
+        // twilioServer.sendText("3477612839",orderMsgText)
 
         res.redirect('/done');
 
