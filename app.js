@@ -268,7 +268,7 @@ app.post('/exit', (req, res) => {
         // not sure how to test that but twillo has a log of all these texts stored as well
 
         //on now
-       // console.log(orderMsgText)
+       console.log(orderMsgText)
 
         /*
         For Demostation purposes I have only made a page for Halal Guys, If I were to make more it would be the same thing just
